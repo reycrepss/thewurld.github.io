@@ -5,15 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Wurld</title>
     <style>
-
+        /* ¿Acaso querías ver el código fuente de la página? Espero que no sea para copiarte, ¿eh? */
+        
         * {
             cursor: url('mouse.png'), auto !important;
         }
+        
         *:active {
             cursor: url('mousec.png'), auto !important;
         }
 
-       body {
+        /* Forzar el cursor personalizado en los elementos interactivos y links */
+        a, button, [onclick] {
+            cursor: url('mouse.png'), pointer !important;
+        }
+
+        a:active, button:active, [onclick]:active {
+            cursor: url('mousec.png'), pointer !important;
+        }
+
+        body {
             margin: 0;
             padding: 0;
             background-size: cover;
@@ -97,6 +108,7 @@
             gap: 25px;
             margin-bottom: 40px;
         }
+        
         .apartado.links {
             flex-direction: row-reverse;
         }
@@ -155,30 +167,31 @@
         .imagen-interactiva:hover {
             transform: scale(1.05);
         }
-#selectorFondo {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 2000;
-}
 
-#selectorFondo button {
-    font-family: 'MS Sans Serif', Tahoma, Arial, sans-serif;
-    font-size: 12px;
-    padding: 6px 10px;
-    border: 2px solid #808080;
-    background: #dfdfdf;
-    cursor: pointer;
-    box-shadow:
-        inset 1px 1px 0 #fff,
-        inset -1px -1px 0 #404040;
-}
+        #selectorFondo {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 2000;
+        }
 
-#selectorFondo button:active {
-    box-shadow:
-        inset -1px -1px 0 #fff,
-        inset 1px 1px 0 #404040;
-}
+        #selectorFondo button {
+            font-family: 'MS Sans Serif', Tahoma, Arial, sans-serif;
+            font-size: 12px;
+            padding: 6px 10px;
+            border: 2px solid #808080;
+            background: #dfdfdf;
+            box-shadow:
+                inset 1px 1px 0 #fff,
+                inset -1px -1px 0 #404040;
+        }
+
+        #selectorFondo button:active {
+            box-shadow:
+                inset -1px -1px 0 #fff,
+                inset 1px 1px 0 #404040;
+        }
+
         @media (max-width: 600px) {
             .apartado, .apartado.links {
                 flex-direction: column;
@@ -194,72 +207,74 @@
     </style>
 </head>
 <body>
+
 <div id="selectorFondo">
     <button onclick="cambiarModoFondo()">
          Fondo: Automático
     </button>
 </div>
 
-    <img src="tiburon_e.png" id="tiburon" class="tiburon-fondo" alt="Tiburón de fondo">
+<img src="tiburon_e.png" id="tiburon" class="tiburon-fondo" alt="Tiburón de fondo">
 
 <div class="contenedor-logo">
     <img src="logo.png" id="logoWeb" alt="Logo" onclick="clickLogo()">
 </div>
 
-    <div class="recuadro-blanco">
-        <div class="barra-windows"></div>
-        <div class="contenido-ventana">
-            
-            <h1 class="titulo-juego">The Wurld</h1>
+<div class="recuadro-blanco">
+    <div class="barra-windows"></div>
+    <div class="contenido-ventana">
+        
+        <h1 class="titulo-juego">The Wurld</h1>
 
-            <div class="apartado">
-                <img src="info.png" class="personaje" alt="Personaje Información">
-                <div class="bloque-contenido">
-                    <h2>Información</h2>
-                    <p>The Wurld es un juego web gratuito inspirado en la estética de internet y los videojuegos de principios de los 2000. Explora distintos estilos gráficos y escenarios creativos en una experiencia principalmente tranquila y relajante, aunque con algunos elementos de terror.
+        <div class="apartado">
+            <img src="info.png" class="personaje" alt="Personaje Información">
+            <div class="bloque-contenido">
+                <h2>Información</h2>
+                <p>The Wurld es un juego web gratuito inspirado en la estética de internet y los videojuegos de principios de los 2000. Explora distintos estilos gráficos y escenarios creativos en una experiencia principalmente tranquila y relajante, aunque con algunos elementos de terror.
 
 Si encuentras errores, tienes alguna duda o necesitas ayuda, puedes contactarnos a través de nuestro correo oficial:queleimporta489@gmail.com</p>
-                </div>
             </div>
-
-            <div class="apartado links">
-                <img src="links.png" class="personaje" alt="Personaje Enlaces">
-                <div class="bloque-contenido">
-                    <h2>Enlaces de interés</h2>
-                    <p>Sigue el desarrollo del juego en nuestras redes sociales oficiales!</p>
-                    
-                    <div class="contenedor-botones">
-                        <a href="https://www.youtube.com/@thewurldcuentaoficial" target="_blank" class="boton-imagen">
-                            <img src="btn_youtube.png" alt="YouTube Oficial">
-                        </a>
-                        <a href="https://x.com/queleimpor42311" target="_blank" class="boton-imagen">
-                            <img src="btn_x.png" alt="X Oficial">
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="apartado">
-                <img src="dj.png" class="personaje" alt="Personaje Dónde Jugar">
-                <div class="bloque-contenido">
-                    <h2>Dónde Jugarlo</h2>
-                    <p>Haz clic en el botón de abajo para ir directamente a la página del juego en Itch.io y poder empezar a jugar.</p>
-                    
-                    <div class="contenedor-botones">
-                        <a href="https://the-wurld.itch.io/the-wurld" target="_blank" class="boton-imagen">
-                            <img src="btn_itchio.png" alt="Jugar en Itch.io">
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="contenedor-final">
-                <img src="npc.png" id="imagenNpc" class="imagen-interactiva" alt="Personaje Final" onclick="cambiarImagen()">
-            </div>
-
         </div>
+
+        <div class="apartado links">
+            <img src="links.png" class="personaje" alt="Personaje Enlaces">
+            <div class="bloque-contenido">
+                <h2>Enlaces de interés</h2>
+                <p>Sigue el desarrollo del juego en nuestras redes sociales oficiales!</p>
+                
+                <div class="contenedor-botones">
+                    <a href="https://www.youtube.com/@thewurldcuentaoficial" target="_blank" class="boton-imagen">
+                        <img src="btn_youtube.png" alt="YouTube Oficial">
+                    </a>
+                    <a href="https://x.com/queleimpor42311" target="_blank" class="boton-imagen">
+                        <img src="btn_x.png" alt="X Oficial">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="apartado">
+            <img src="dj.png" class="personaje" alt="Personaje Dónde Jugar">
+            <div class="bloque-contenido">
+                <h2>Dónde Jugarlo</h2>
+                <p>Haz clic en el botón de abajo para ir directamente a la página del juego en Itch.io y poder empezar a jugar.</p>
+                
+                <div class="contenedor-botones">
+                    <a href="https://the-wurld.itch.io/the-wurld" target="_blank" class="boton-imagen">
+                        <img src="btn_itchio.png" alt="Jugar en Itch.io">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="contenedor-final">
+            <img src="npc.png" id="imagenNpc" class="imagen-interactiva" alt="Personaje Final" onclick="cambiarImagen()">
+        </div>
+
     </div>
-    <script>
+</div>
+
+<script>
 let contadorClicksLogo = 0;
 
 const archivosRandom = [
@@ -290,7 +305,6 @@ function clickLogo() {
 let modoFondo = 0;
 
 function aplicarFondo() {
-
     if (modoFondo === 1) {
         document.body.style.backgroundImage = "url('sky.png')";
         return;
@@ -310,7 +324,6 @@ function aplicarFondo() {
 }
 
 function cambiarModoFondo() {
-
     modoFondo = (modoFondo + 1) % 3;
 
     const boton = document.querySelector("#selectorFondo button");
@@ -332,63 +345,64 @@ function cambiarModoFondo() {
 
 aplicarFondo();
 setInterval(aplicarFondo, 60000);
-        const tiburon = document.getElementById('tiburon');
-        
-        const velocidad = 1.8;
-        const velocidadGiro = 0.04;
-        const margenPantalla = 100;
 
-        let posX = window.innerWidth / 2;
-        let posY = window.innerHeight / 2;
-        let targetX = posX;
-        let targetY = posY;
-        let anguloActual = 0;
+const tiburon = document.getElementById('tiburon');
 
-        const direcciones = ['e', 'se', 's', 'sw', 'w', 'nw', 'n', 'ne'];
+const velocidad = 1.8;
+const velocidadGiro = 0.04;
+const margenPantalla = 100;
 
-        function buscarNuevoDestino() {
-            targetX = margenPantalla + Math.random() * (window.innerWidth - margenPantalla * 2);
-            targetY = margenPantalla + Math.random() * (window.innerHeight - margenPantalla * 2);
-        }
+let posX = window.innerWidth / 2;
+let posY = window.innerHeight / 2;
+let targetX = posX;
+let targetY = posY;
+let anguloActual = 0;
+
+const direcciones = ['e', 'se', 's', 'sw', 'w', 'nw', 'n', 'ne'];
+
+function buscarNuevoDestino() {
+    targetX = margenPantalla + Math.random() * (window.innerWidth - margenPantalla * 2);
+    targetY = margenPantalla + Math.random() * (window.innerHeight - margenPantalla * 2);
+}
 
 function actualizarTiburon() {
-            let dx = targetX - posX;
-            let dy = targetY - posY;
-            let distancia = Math.sqrt(dx * dx + dy * dy);
+    let dx = targetX - posX;
+    let dy = targetY - posY;
+    let distancia = Math.sqrt(dx * dx + dy * dy);
 
-            if (distancia < 60) {
-                buscarNuevoDestino();
-            }
-
-            let anguloDestino = Math.atan2(dy, dx) * 180 / Math.PI;
-
-            let diferenciaAngulo = anguloDestino - anguloActual;
-            while (diferenciaAngulo < -180) diferenciaAngulo += 360;
-            while (diferenciaAngulo > 180) diferenciaAngulo -= 360;
-
-            anguloActual += diferenciaAngulo * velocidadGiro;
-            
-            let anguloNormalizado = ((anguloActual % 360) + 360) % 360;
-
-            posX += Math.cos(anguloNormalizado * Math.PI / 180) * velocidad;
-            posY += Math.sin(anguloNormalizado * Math.PI / 180) * velocidad;
-
-            posX = Math.max(margenPantalla / 2, Math.min(window.innerWidth - margenPantalla, posX));
-            posY = Math.max(margenPantalla / 2, Math.min(window.innerHeight - margenPantalla, posY));
-
-            let indiceDireccion = Math.round(anguloNormalizado / 45) % 8;
-            
-            let direccionFinal = direcciones[indiceDireccion] || 'e';
-
-            tiburon.src = `tiburon_${direccionFinal}.png`;
-            tiburon.style.transform = `translate(${posX}px, ${posY}px)`;
-
-            requestAnimationFrame(actualizarTiburon);
-        }
-
+    if (distancia < 60) {
         buscarNuevoDestino();
-        actualizarTiburon();
-    </script>
+    }
+
+    let anguloDestino = Math.atan2(dy, dx) * 180 / Math.PI;
+
+    let diferenciaAngulo = anguloDestino - anguloActual;
+    while (diferenciaAngulo < -180) diferenciaAngulo += 360;
+    while (diferenciaAngulo > 180) diferenciaAngulo -= 360;
+
+    anguloActual += diferenciaAngulo * velocidadGiro;
+    
+    let anguloNormalizado = ((anguloActual % 360) + 360) % 360;
+
+    posX += Math.cos(anguloNormalizado * Math.PI / 180) * velocidad;
+    posY += Math.sin(anguloNormalizado * Math.PI / 180) * velocidad;
+
+    posX = Math.max(margenPantalla / 2, Math.min(window.innerWidth - margenPantalla, posX));
+    posY = Math.max(margenPantalla / 2, Math.min(window.innerHeight - margenPantalla, posY));
+
+    let indiceDireccion = Math.round(anguloNormalizado / 45) % 8;
+    
+    let direccionFinal = direcciones[indiceDireccion] || 'e';
+
+    tiburon.src = `tiburon_${direccionFinal}.png`;
+    tiburon.style.transform = `translate(${posX}px, ${posY}px)`;
+
+    requestAnimationFrame(actualizarTiburon);
+}
+
+buscarNuevoDestino();
+actualizarTiburon();
+</script>
 
 </body>
 </html>
