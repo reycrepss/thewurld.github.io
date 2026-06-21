@@ -3,25 +3,312 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prueba</title>
+    <title>The Wurld</title>
     <style>
-        body {
-            margin: 0;
-            background: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
+        * {
+            cursor: url('mouse.png'), auto !important;
+        }
+        *:active {
+            cursor: url('mousec.png'), auto !important;
         }
 
-        .texto {
-            color: black;
-            font-size: 2rem;
+       body {
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
+            overflow-x: hidden;
+        }
+
+        .tiburon-fondo {
+            position: fixed;
+            z-index: 999;
+            width: 80px;  /* Tamaño en pantalla */
+            height: auto;
+            pointer-events: none;
+            image-rendering: pixelated;
+            left: 0;
+            top: 0;
+            will-change: transform; 
+        }
+
+        .contenedor-logo {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            max-width: 900px;
+            width: 90%;
+            text-align: center;
+        }
+
+        .contenedor-logo img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .recuadro-blanco {
+            background-color: #dfdfdf;
+            width: 90%;
+            max-width: 800px;
+            padding: 6px;
+            box-shadow: inset 1px 1px 0px #fff, 
+                        inset -1px -1px 0px #0a0a0a, 
+                        inset 2px 2px 0px #dfdfdf, 
+                        inset -2px -2px 0px #808080,
+                        0px 6px 20px rgba(0, 0, 0, 0.3);
+            border-radius: 0px;
+            box-sizing: border-box;
+            margin-bottom: 60px;
+        }
+
+        .barra-windows {
+            background-image: url('hud98.png');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            height: 32px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .contenido-ventana {
+            padding: 35px;
+            font-family: 'MS Sans Serif', Tahoma, Arial, sans-serif;
+        }
+
+        .titulo-juego {
+            font-size: 2.5rem;
+            margin-top: 0;
+            margin-bottom: 30px;
+            color: #111;
+            text-align: center;
+        }
+
+        .apartado {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        .apartado.links {
+            flex-direction: row-reverse;
+        }
+
+        .apartado img.personaje {
+            width: 150px;
+            height: auto;
+            flex-shrink: 0;
+        }
+
+        .bloque-contenido {
+            flex-grow: 1;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        .bloque-contenido h2 {
+            margin-top: 0;
+            color: #000;
+        }
+
+        .contenedor-botones {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .boton-imagen {
+            display: inline-block;
+            transition: transform 0.2s, filter 0.2s;
+        }
+
+        .boton-imagen img {
+            max-width: 180px; 
+            height: auto;
+            display: block;
+        }
+
+        .boton-imagen:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .contenedor-final {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .imagen-interactiva {
+            max-width: 200px;
+            height: auto;
+            transition: transform 0.2s;
+        }
+
+        .imagen-interactiva:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 600px) {
+            .apartado, .apartado.links {
+                flex-direction: column;
+                text-align: center;
+            }
+            .contenedor-botones {
+                justify-content: center;
+            }
+            .contenido-ventana {
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="texto">ver</div>
+
+    <img src="tiburon_e.png" id="tiburon" class="tiburon-fondo" alt="Tiburón de fondo">
+
+    <div class="contenedor-logo">
+        <img src="logo.png" alt="Logo">
+    </div>
+
+    <div class="recuadro-blanco">
+        <div class="barra-windows"></div>
+        <div class="contenido-ventana">
+            
+            <h1 class="titulo-juego">The Wurld</h1>
+
+            <div class="apartado">
+                <img src="info.png" class="personaje" alt="Personaje Información">
+                <div class="bloque-contenido">
+                    <h2>Información</h2>
+                    <p>The Wurld es un juego web gratuito inspirado en la estética de internet y los videojuegos de principios de los 2000. Explora distintos estilos gráficos y escenarios creativos en una experiencia principalmente tranquila y relajante, aunque con algunos elementos de terror.
+
+Si encuentras errores, tienes alguna duda o necesitas ayuda, puedes contactarnos a través de nuestro correo oficial: (correo).</p>
+                </div>
+            </div>
+
+            <div class="apartado links">
+                <img src="links.png" class="personaje" alt="Personaje Enlaces">
+                <div class="bloque-contenido">
+                    <h2>Enlaces de interés</h2>
+                    <p>Sigue el desarrollo del juego en nuestras redes sociales oficiales!</p>
+                    
+                    <div class="contenedor-botones">
+                        <a href="https://www.youtube.com/@thewurldcuentaoficial" target="_blank" class="boton-imagen">
+                            <img src="btn_youtube.png" alt="YouTube Oficial">
+                        </a>
+                        <a href="https://x.com/queleimpor42311" target="_blank" class="boton-imagen">
+                            <img src="btn_x.png" alt="X Oficial">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="apartado">
+                <img src="dj.png" class="personaje" alt="Personaje Dónde Jugar">
+                <div class="bloque-contenido">
+                    <h2>Dónde Jugarlo</h2>
+                    <p>Haz clic en el botón de abajo para ir directamente a la página del juego en Itch.io y poder empezar a jugar.</p>
+                    
+                    <div class="contenedor-botones">
+                        <a href="https://the-wurld.itch.io/the-wurld" target="_blank" class="boton-imagen">
+                            <img src="btn_itchio.png" alt="Jugar en Itch.io">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contenedor-final">
+                <img src="npc.png" id="imagenNpc" class="imagen-interactiva" alt="Personaje Final" onclick="cambiarImagen()">
+            </div>
+
+        </div>
+    </div>
+    <script>
+function actualizarFondoPorHora() {
+            const ahora = new Date();
+            const hora = ahora.getHours();
+
+            if (hora >= 18 || hora < 7) {
+                document.body.style.backgroundImage = "url('sky_night.png')";
+            } else {
+                document.body.style.backgroundImage = "url('sky.png')";
+            }
+        }
+
+        actualizarFondoPorHora();
+        function cambiarImagen() {
+            var img = document.getElementById('imagenNpc');
+            if (img.src.endsWith("npc.png")) {
+                img.src = "npc2.png";
+            } else {
+                img.src = "npc.png";
+            }
+        }
+
+        const tiburon = document.getElementById('tiburon');
+        
+        const velocidad = 1.8;
+        const velocidadGiro = 0.04;
+        const margenPantalla = 100;
+
+        let posX = window.innerWidth / 2;
+        let posY = window.innerHeight / 2;
+        let targetX = posX;
+        let targetY = posY;
+        let anguloActual = 0;
+
+        const direcciones = ['e', 'se', 's', 'sw', 'w', 'nw', 'n', 'ne'];
+
+        function buscarNuevoDestino() {
+            targetX = margenPantalla + Math.random() * (window.innerWidth - margenPantalla * 2);
+            targetY = margenPantalla + Math.random() * (window.innerHeight - margenPantalla * 2);
+        }
+
+function actualizarTiburon() {
+            let dx = targetX - posX;
+            let dy = targetY - posY;
+            let distancia = Math.sqrt(dx * dx + dy * dy);
+
+            if (distancia < 60) {
+                buscarNuevoDestino();
+            }
+
+            let anguloDestino = Math.atan2(dy, dx) * 180 / Math.PI;
+
+            let diferenciaAngulo = anguloDestino - anguloActual;
+            while (diferenciaAngulo < -180) diferenciaAngulo += 360;
+            while (diferenciaAngulo > 180) diferenciaAngulo -= 360;
+
+            anguloActual += diferenciaAngulo * velocidadGiro;
+            
+            let anguloNormalizado = ((anguloActual % 360) + 360) % 360;
+
+            posX += Math.cos(anguloNormalizado * Math.PI / 180) * velocidad;
+            posY += Math.sin(anguloNormalizado * Math.PI / 180) * velocidad;
+
+            posX = Math.max(margenPantalla / 2, Math.min(window.innerWidth - margenPantalla, posX));
+            posY = Math.max(margenPantalla / 2, Math.min(window.innerHeight - margenPantalla, posY));
+
+            let indiceDireccion = Math.round(anguloNormalizado / 45) % 8;
+            
+            let direccionFinal = direcciones[indiceDireccion] || 'e';
+
+            tiburon.src = `tiburon_${direccionFinal}.png`;
+            tiburon.style.transform = `translate(${posX}px, ${posY}px)`;
+
+            requestAnimationFrame(actualizarTiburon);
+        }
+
+        buscarNuevoDestino();
+        actualizarTiburon();
+    </script>
+
 </body>
 </html>
