@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Wurld</title>
     <style>
+//acaso querias ver el codigo fuente de la pagina? espero que no sea para copiarte eh
         * {
             cursor: url('mouse.png'), auto !important;
         }
@@ -154,7 +155,30 @@
         .imagen-interactiva:hover {
             transform: scale(1.05);
         }
+#selectorFondo {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 2000;
+}
 
+#selectorFondo button {
+    font-family: 'MS Sans Serif', Tahoma, Arial, sans-serif;
+    font-size: 12px;
+    padding: 6px 10px;
+    border: 2px solid #808080;
+    background: #dfdfdf;
+    cursor: pointer;
+    box-shadow:
+        inset 1px 1px 0 #fff,
+        inset -1px -1px 0 #404040;
+}
+
+#selectorFondo button:active {
+    box-shadow:
+        inset -1px -1px 0 #fff,
+        inset 1px 1px 0 #404040;
+}
         @media (max-width: 600px) {
             .apartado, .apartado.links {
                 flex-direction: column;
@@ -170,6 +194,11 @@
     </style>
 </head>
 <body>
+<div id="selectorFondo">
+    <button onclick="cambiarModoFondo()">
+         Fondo: Automático
+    </button>
+</div>
 
     <img src="tiburon_e.png" id="tiburon" class="tiburon-fondo" alt="Tiburón de fondo">
 
@@ -189,7 +218,7 @@
                     <h2>Información</h2>
                     <p>The Wurld es un juego web gratuito inspirado en la estética de internet y los videojuegos de principios de los 2000. Explora distintos estilos gráficos y escenarios creativos en una experiencia principalmente tranquila y relajante, aunque con algunos elementos de terror.
 
-Si encuentras errores, tienes alguna duda o necesitas ayuda, puedes contactarnos a través de nuestro correo oficial: (correo).</p>
+Si encuentras errores, tienes alguna duda o necesitas ayuda, puedes contactarnos a través de nuestro correo oficial:queleimporta489@gmail.com</p>
                 </div>
             </div>
 
@@ -231,27 +260,54 @@ Si encuentras errores, tienes alguna duda o necesitas ayuda, puedes contactarnos
         </div>
     </div>
     <script>
-function actualizarFondoPorHora() {
-            const ahora = new Date();
-            const hora = ahora.getHours();
+let modoFondo = 0;
+// 0 = automático
+// 1 = día
+// 2 = noche
 
-            if (hora >= 18 || hora < 7) {
-                document.body.style.backgroundImage = "url('sky_night.png')";
-            } else {
-                document.body.style.backgroundImage = "url('sky.png')";
-            }
-        }
+function aplicarFondo() {
 
-        actualizarFondoPorHora();
-        function cambiarImagen() {
-            var img = document.getElementById('imagenNpc');
-            if (img.src.endsWith("npc.png")) {
-                img.src = "npc2.png";
-            } else {
-                img.src = "npc.png";
-            }
-        }
+    if (modoFondo === 1) {
+        document.body.style.backgroundImage = "url('sky.png')";
+        return;
+    }
 
+    if (modoFondo === 2) {
+        document.body.style.backgroundImage = "url('sky_night.png')";
+        return;
+    }
+
+    const hora = new Date().getHours();
+
+    document.body.style.backgroundImage =
+        (hora >= 18 || hora < 7)
+        ? "url('sky_night.png')"
+        : "url('sky.png')";
+}
+
+function cambiarModoFondo() {
+
+    modoFondo = (modoFondo + 1) % 3;
+
+    const boton = document.querySelector("#selectorFondo button");
+
+    if (modoFondo === 0) {
+        boton.textContent = "Fondo: Automático";
+    }
+
+    if (modoFondo === 1) {
+        boton.textContent = "Fondo: Día";
+    }
+
+    if (modoFondo === 2) {
+        boton.textContent = "Fondo: Noche";
+    }
+
+    aplicarFondo();
+}
+
+aplicarFondo();
+setInterval(aplicarFondo, 60000);
         const tiburon = document.getElementById('tiburon');
         
         const velocidad = 1.8;
