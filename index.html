@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Wurld</title>
     <style>
-//acaso querias ver el codigo fuente de la pagina? espero que no sea para copiarte eh
+
         * {
             cursor: url('mouse.png'), auto !important;
         }
@@ -202,9 +202,9 @@
 
     <img src="tiburon_e.png" id="tiburon" class="tiburon-fondo" alt="Tiburón de fondo">
 
-    <div class="contenedor-logo">
-        <img src="logo.png" alt="Logo">
-    </div>
+<div class="contenedor-logo">
+    <img src="logo.png" id="logoWeb" alt="Logo" onclick="clickLogo()">
+</div>
 
     <div class="recuadro-blanco">
         <div class="barra-windows"></div>
@@ -260,6 +260,33 @@ Si encuentras errores, tienes alguna duda o necesitas ayuda, puedes contactarnos
         </div>
     </div>
     <script>
+let contadorClicksLogo = 0;
+
+const archivosRandom = [
+    'imagen1.png',
+    'party_0.gif',
+    'misterio.png',
+    'misterio.jpg',
+    '15.png',
+    'logo.png',
+    'student0000.gif'
+];
+
+function clickLogo() {
+    contadorClicksLogo++;
+
+    if (contadorClicksLogo === 5) {
+        const logo = document.getElementById('logoWeb');
+        
+        const indiceAleatorio = Math.floor(Math.random() * archivosRandom.length);
+        const archivoElegido = archivosRandom[indiceAleatorio];
+
+        logo.src = `random/${archivoElegido}`;
+
+        contadorClicksLogo = 0;
+    }
+}
+
 let modoFondo = 0;
 
 function aplicarFondo() {
