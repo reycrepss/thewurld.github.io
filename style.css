@@ -1,0 +1,243 @@
+/* ¿Acaso querías ver el código fuente de la página? Espero que no sea para copiarte, ¿eh? */
+
+* {
+    cursor: url('mouse.png'), auto !important;
+}
+
+*:active {
+    cursor: url('mousec.png'), auto !important;
+}
+
+/* Forzar el cursor personalizado en los elementos interactivos y links */
+a, button, [onclick] {
+    cursor: url('mouse.png'), pointer !important;
+}
+
+a:active, button:active, [onclick]:active {
+    cursor: url('mousec.png'), pointer !important;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    overflow-x: hidden;
+}
+
+.tiburon-fondo {
+    position: fixed;
+    z-index: 999;
+    width: 80px;
+    height: auto;
+    pointer-events: none;
+    image-rendering: pixelated;
+    left: 0;
+    top: 0;
+    will-change: transform; 
+}
+
+.contenedor-logo {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    max-width: 900px;
+    width: 90%;
+    text-align: center;
+}
+
+.contenedor-logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+.recuadro-blanco {
+    background-color: #dfdfdf;
+    width: 100%; /* Cambiado a 100% para que lo controle el padre .zona-principal */
+    max-width: 800px;
+    padding: 6px;
+    box-shadow: inset 1px 1px 0px #fff, 
+                inset -1px -1px 0px #0a0a0a, 
+                inset 2px 2px 0px #dfdfdf, 
+                inset -2px -2px 0px #808080,
+                0px 6px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 0px;
+    box-sizing: border-box;
+}
+
+.barra-windows {
+    background-image: url('hud98.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.contenido-ventana {
+    padding: 35px;
+    font-family: 'MS Sans Serif', Tahoma, Arial, sans-serif;
+}
+
+.titulo-juego {
+    font-size: 2.5rem;
+    margin-top: 0;
+    margin-bottom: 30px;
+    color: #111;
+    text-align: center;
+}
+
+.apartado {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.apartado.links {
+    flex-direction: row-reverse;
+}
+
+.apartado img.personaje {
+    width: 150px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.bloque-contenido {
+    flex-grow: 1;
+    color: #222;
+    line-height: 1.6;
+}
+
+.bloque-contenido h2 {
+    margin-top: 0;
+    color: #000;
+}
+
+.contenedor-botones {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.boton-imagen {
+    display: inline-block;
+    transition: transform 0.2s, filter 0.2s;
+}
+
+.boton-imagen img {
+    max-width: 180px; 
+    height: auto;
+    display: block;
+}
+
+.boton-imagen:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.contenedor-final {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.imagen-interactiva {
+    max-width: 200px;
+    height: auto;
+    transition: transform 0.2s;
+}
+
+.imagen-interactiva:hover {
+    transform: scale(1.05);
+}
+
+#selectorFondo {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 2000;
+}
+
+#selectorFondo button {
+    font-family: 'MS Sans Serif', Tahoma, Arial, sans-serif;
+    font-size: 12px;
+    padding: 6px 10px;
+    border: 2px solid #808080;
+    background: #dfdfdf;
+    box-shadow:
+        inset 1px 1px 0 #fff,
+        inset -1px -1px 0 #404040;
+}
+
+#selectorFondo button:active {
+    box-shadow:
+        inset -1px -1px 0 #fff,
+        inset 1px 1px 0 #404040;
+}
+
+/* --- NUEVOS ESTILOS PARA LA DISTRIBUCIÓN DEL DEVLOG FLOTANTE --- */
+
+.zona-principal {
+    display: flex;
+    align-items: flex-start; /* Alinea arriba */
+    justify-content: center;
+    gap: 15px;
+    width: 90%;
+    max-width: 920px; /* Ventana (800px) + Gap (15px) + GIF (aprox 100px) */
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.enlace-devlog {
+    margin-top: 6px; /* Para alinearse perfectamente a la altura del hud98.png */
+    flex-shrink: 0;
+    text-decoration: none;
+}
+
+.gif-devlog {
+    width: 90px; /* Modifica esto según el tamaño real de tu devlogif.gif */
+    height: auto;
+    display: block;
+    transition: transform 0.2s;
+}
+
+.gif-devlog:hover {
+    transform: scale(1.08);
+}
+
+/* Estilo específico para el body cuando estemos en el devlog */
+body.devlog-body {
+    background-image: url('devfondo.png') !important;
+}
+
+@media (max-width: 930px) {
+    .zona-principal {
+        flex-direction: column;
+        align-items: center;
+    }
+    .enlace-devlog {
+        margin-top: 20px; /* Espacio extra si baja en móviles */
+    }
+}
+
+@media (max-width: 600px) {
+    .apartado, .apartado.links {
+        flex-direction: column;
+        text-align: center;
+    }
+    .contenedor-botones {
+        justify-content: center;
+    }
+    .contenido-ventana {
+        padding: 20px;
+    }
+}
